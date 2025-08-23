@@ -1,0 +1,21 @@
+services:
+  mongo:
+    image: mongo:7
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.runCommand({ ping: 1 })"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  app:
+    build: .          
+    image: simple-mongo-app:compose
+    environment:
+      MONGO_URI: "mongodb://mongo:27017"
+      DB_NAME: "simple_db"
+    ports:
+      - "8000:8000"
+    depends_on:
+      mongo:
+        condition: service_healthy
+

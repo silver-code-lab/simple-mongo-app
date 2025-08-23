@@ -1,0 +1,22 @@
+# Virtual envs
+.venv/
+env/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Packaging
+dist/
+build/
+*.egg-info/
+
+# Local config
+.env
