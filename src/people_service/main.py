@@ -5,18 +5,18 @@ from .db import db
 
 app = FastAPI(title="Simple App")
 
-# ---------- helpers ----------
+
 def to_public(doc):
     return {"id": str(doc["_id"]), "name": doc.get("name")}
 
-# ---------- API ----------
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
 
 @app.get("/items")
 def list_items():
-    docs = list(db.items.find({}, {"name": 1}))  # returns _id + name
+    docs = list(db.items.find({}, {"name": 1}))  
     return [to_public(d) for d in docs]
 
 @app.post("/items")
@@ -53,7 +53,7 @@ def delete_all_items():
     res = db.items.delete_many({})
     return {"ok": True, "deleted": res.deleted_count}
 
-# ---------- Minimal HTML UI ----------
+
 @app.get("/", response_class=HTMLResponse)
 def home():
     return """
