@@ -1,4 +1,4 @@
-# Simple App (FastAPI + Mongo) — Fixed POST
+# Simple App (FastAPI + Mongo) 
 
 ## Run
 ```bash
